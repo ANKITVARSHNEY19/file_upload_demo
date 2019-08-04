@@ -1,0 +1,9 @@
+<%if Company.present?%>
+	<%= form_tag admin_upload_csv_import_listings_path, multipart: true do %>
+		<%= select_tag :company_id, options_for_select(Company.all.map{|u| [u.name, u.id]})%>
+	  <%= file_field_tag 'file', accept: 'text/csv' %>
+	  <%= submit_tag 'Import Csv' %>
+	<% end %>
+<%else%>
+	"Plese create at least one company record"
+<%end%>	
